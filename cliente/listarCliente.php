@@ -28,20 +28,20 @@ if ($listaCliente != 'Vazio') {
                 $ativo = $listarClienteItem->ativo;
             ?>
                 <tr>
-                    <th id="id" scope="row"><?php echo $id ?></th>
+                    <th scope="row"><?php echo $id ?></th>
                     <td> <?php echo $nome ?> </td>
                     <td> <?php echo $telefone ?> </td>
                     <td>
                         <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
-                            <button type="button" class="btn btn-outline-ligth border-secondary-subtle" data-bs-toggle="modal" data-bs-target="#modalEditarCliente"> <i class="fa-solid fa-pen-to-square fa-xl" style="color: #000000;"></i></button>
-                            <button type="button" class="btn btn-outline-ligth border-secondary-subtle" data-bs-toggle="modal" data-bs-target="#modalExcluirCliente"> <i class="fa-solid fa-trash fa-xl" style="color: #000000;"></i></button>
+                            <button type="button" class="btn btn-outline-ligth border-secondary-subtle" onclick="dadosCLiente(<?php echo $id ?>)"> <i class="fa-solid fa-pen-to-square fa-xl" style="color: #000000;"></i></button>
+                            <button type="button" class="btn btn-outline-ligth border-secondary-subtle" > <i onclick="deletaGeralMsg(<?php echo $id ?>, 'excluirCliente', 'listarCliente')" class="fa-solid fa-trash fa-xl" style="color: #000000;"></i></button>
                                                                                            
                             <?php
 
                             if ($ativo == 'A') {
 
                             ?>
-                                <button type="button" onclick="ativarGeral(<?php echo $id ?>, 'desativado', 'btnDesativar')"  class="btn btn-outline-success border-secondary-subtle" data-bs-toggle="modal"  data-bs-target="#modalDesativarCliente">Ativado</button>
+                                <button type="button" onclick="ativarGeral(<?php echo $id ?>, 'desativar', 'btnDesativar', 'modalDesativarCliente', 'ativarCliente', 'listarCliente')"  class="btn btn-outline-success border-secondary-subtle" data-bs-toggle="modal"  data-bs-target="#modalDesativarCliente">Ativado</button>
                             
                             <?php
 
@@ -49,7 +49,7 @@ if ($listaCliente != 'Vazio') {
 
                             ?>
 
-                                <button type="button" onclick="ativarGeral(<?php echo $id ?>, 'ativado', 'btnAtivar')"  class="btn btn-outline-danger border-secondary-subtle" data-bs-toggle="modal" data-bs-target="#modalAtivarCliente">Desativado</button>
+                                <button type="button" onclick="ativarGeral(<?php echo $id ?>, 'ativar', 'btnAtivar', 'modalAtivarCliente', 'ativarCliente', 'listarCliente')"  class="btn btn-outline-danger border-secondary-subtle" data-bs-toggle="modal" data-bs-target="#modalAtivarCliente">Desativado</button>
 
                         </div>
                     </td>

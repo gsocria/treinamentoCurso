@@ -9,7 +9,13 @@ switch ($acao) {
     case 'listarCliente':
         include_once('cliente/listarCliente.php');
         break;
-    case 'alterarStatus':
-        include_once('alterarStatus.php');
+    case 'ativarCliente':
+        include_once('cliente/ativarCliente.php');
+        break;
+    case 'excluirCliente':
+        include_once('cliente/excluirCliente.php');
+        break;
+    case 'verDadosCliente':
+        include_once('cliente/verDadosCliente.php');
         break;
 }

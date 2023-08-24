@@ -13,7 +13,6 @@ include_once('./config/conexao.php')
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ola mundo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="sweetalert2.min.css">
 </head>
 
 <body>
@@ -50,7 +49,7 @@ include_once('./config/conexao.php')
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form id="formAddCliente" name="formAddCliente" method="POST" action="#">
+                    <form id="formAddCliente" class="formAddCliente" name="formAddCliente" method="POST" action="#">
                         <div class="modal-body">
 
                             <div class="mb-3">
@@ -61,13 +60,14 @@ include_once('./config/conexao.php')
                             <div class="mb-3">
                                 <label for="telefoneCliente" class="form-label">Telefone:</label>
                                 <input type="telefone" name="telefoneCliente" class="form-control maskCelular" id="telefoneCliente">
+                               
                             </div>
 
                         </div>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                            <button type="submit" class="btn  btn-primary">Confirmar</button>
+                            <button type="submit" onclick="addCliente('listarCliente')" class="btn  btn-primary">Confirmar</button>
                         </div>
                     </form>
                 </div>
@@ -82,29 +82,27 @@ include_once('./config/conexao.php')
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <form id="formAltCliente" name="formAltCliente" method="POST" action="#">
+                        <div class="modal-body">
 
-        <div class="modal fade " id="modalExcluirCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Exluir</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                            <div class="mb-3">
+                                <label for="nomeCliente" class="form-label">Nome:</label>
+                                <input type="text" name="nomeClienteAlt" class="form-control" id="nomeClienteAlt" aria-describedby="emailHelp">
+
+                            </div>
+                            <div class="mb-3">
+                                <label for="telefoneCliente" class="form-label">Telefone:</label>
+                                <input type="telefone" name="telefoneCliente" class="form-control maskCelular" id="telefoneClienteAlt">
+                                <input type="hidden" value="" id="idClienteAlt" name="idClienteAlt">
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            <button type="submit" onclick="addCliente('listarCliente')" class="btn  btn-primary">Confirmar</button>
+                        </div>
+                    </form>
                     </div>
                 </div>
             </div>

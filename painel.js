@@ -1,5 +1,5 @@
 mascaras();
-function addCliente() {
+function addCliente(pageRetorno) {
 
     $('#formAddCliente').on('submit', function (e) {
         e.preventDefault();
@@ -25,8 +25,8 @@ function addCliente() {
 
                     $('#modalAddCliente').modal('hide');
 
-                    listarGeral('listarCliente');
-                    msgGeral();
+                    listarGeral(pageRetorno);
+                    msgGeral('success', 'Inserido com sucesso');
 
                 } else {
                     alert('Nao foi possivel inserir')
@@ -60,19 +60,103 @@ function listarGeral(page) {
 }
 
 
-function ativarGeral(e, f, idbtn) {
+function ativarGeral(e, f, idbtn,idModal, page, pageRetorno) {
 
-    if(f == 'ativo'){
-        var btn = idbtn
+    if(f == 'ativar'){
+        var btn = idbtn;
+        var ativo = 'A';
     } else {
-        var btn = idbtn
+        var btn = idbtn;
+        var ativo = 'D';
     }
 
     $('#' + btn).on('click', function () {
-        alert(f);
+        var dados = {
+            acao: page,
+            id: e,
+            status: ativo
+        }
+    
+        $.ajax({
+            type: 'POST',
+            dataType: 'JSON',
+            url: 'controle.php',
+            data: dados,
+            beforedSend: function (retorno) {
+                console.log(retorno);
+            }, success: function (retorno) {
+
+                if(retorno == 'Atualizado'){
+
+                    listarGeral(pageRetorno);   
+
+                }else{
+                    console.log('chegou aqui');  
+                }
+            }
+        });
     })
 
  }
+
+
+ function deletaGeralMsg(idVar, page, pageRetorno ){
+    Swal.fire({
+        title: 'Deseja excluir esse registro?',
+        text: "Você não podera desfazer essa operação!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Deletar'
+      }).then((result) => {
+        
+        if (result.isConfirmed) {
+            var dados = {
+                acao: page,
+                id: idVar
+            }
+    
+            $.ajax({
+                type: 'POST',
+                dataType: 'HTML',
+                url: 'controle.php',
+                data: dados,
+                beforedSend: function (retorno) {
+                }, success: function (retorno) {
+                    listarGeral(pageRetorno)
+                    console.log(retorno);
+                    Swal.fire(
+                        'Deletado com sucesso!',
+                        'Lista atualizada!',
+                        'success'
+                )}
+            });
+        }
+    });
+}
+
+function dadosCLiente(idVar){
+    var dados = {
+        acao: 'verDadosCliente',
+        id: idVar
+    }
+
+    // $('#modalEditarCliente').modal('show');
+
+    $.ajax({
+        type: 'POST',
+        dataType: 'JSON',
+        url: 'controle.php',
+        data: dados,
+        beforedSend: function (retorno) {
+            
+        }, success: function (retorno) {
+
+            console.log(retorno);
+        }
+    });
+}
  
 
 function mascaras() {
@@ -89,11 +173,11 @@ function mascaras() {
     })
 }
 
-function msgGeral() {
+function msgGeral(icone,titulo) {
     Swal.fire({
         position: 'center',
-        icon: 'success',
-        title: 'Inserido com sucesso',
+        icon: icone,
+        title: titulo,
         showConfirmButton: false,
         timer: 2000
     })
