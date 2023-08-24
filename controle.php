@@ -3,6 +3,9 @@
 $acao = filter_input(INPUT_POST, 'acao', FILTER_SANITIZE_STRING);
 
 switch ($acao) {
+
+    // CLIENTE
+
     case 'addCliente':
         include_once('cliente/addCliente.php');
         break;
@@ -17,5 +20,14 @@ switch ($acao) {
         break;
     case 'verDadosCliente':
         include_once('cliente/verDadosCliente.php');
+        break;
+
+        // PRODUTO
+
+    case 'listarProduto':
+        include_once('produto/listarProduto.php');
+        break;
+    case 'excluirProduto':
+        include_once('produto/excluirProduto.php');
         break;
 }
