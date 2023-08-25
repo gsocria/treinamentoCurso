@@ -10,9 +10,9 @@ $conn = conectar();
 
 if(!empty($dados) && isset($dados)){
     $id = $dados['id'];
-
-    
+   
     $retorno = deleteRegistro('cliente', 'idcliente', "$id");
+    
 } else {
 
     $retorno = 'nDeletado';

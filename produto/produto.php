@@ -2,6 +2,7 @@
 
 include_once('../config/constantes.php');
 include_once('../config/conexao.php');
+include_once('../func/dashboard.php');
 
 
 ?>
@@ -31,8 +32,12 @@ include_once('../config/conexao.php');
 
             </div>
             <div class="card-body">
-                
-                <?php include_once('listarProduto.php') ?>
+
+                <div id="listaProduto">
+                    <?php include_once('listarProduto.php') ?>
+                </div>
+
+
 
             </div>
         </div>
@@ -67,6 +72,7 @@ include_once('../config/conexao.php');
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js" integrity="sha512-efAcjYoYT0sXxQRtxGY37CKYmqsFVOIwMApaEbrxJr4RwqVVGw8o+Lfh/+59TU07+suZn1BWq4fDl5fdgyCNkw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/1b60912f0e.js" crossorigin="anonymous"></script>
     <script src="produto.js"></script>
 
